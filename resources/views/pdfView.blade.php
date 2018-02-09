@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Load PDF</title>
+	<title>Documento PDF</title>
 	<style type="text/css">
 		body,td,th{
 			font-family: Arial, Helvetica, sans-serif;
@@ -43,30 +43,27 @@
 </head>
 <body>
 	<img src="./img/logo.png" />
-<h2>Load PDF File</h2>
-	<table>
-		<tr>
-			<th>CC</th>
-			<th>Apellidos</th>
-			<th>Nombres</th>
-			<th>Celular</th>
-			<th>Email</th>
-			<th>Departamento Nacimiento</th>
-			<th>Ciudad Nacimiento</th>
-			<th>Fecha - Hora de Registro</th>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>Vimal Kashiyani</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Hardik Savani</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>Harshad Pathak</td>
-		</tr>
-	</table>
+<h2>Documento PDF con Datos Personales</h2>
+<br><br>
+<b>Apellidos:</b><br>
+{{$consult->lastname}}<br><br>
+<b>Nombres:</b><br>
+{{$consult->name}}<br><br>
+<b>Cedula Ciudadania:</b><br>
+{{$consult->cc}}<br><br>
+<b>Celular:</b><br>
+{{$consult->cellphone}}<br><br>
+<b>Email:</b><br>
+{{$consult->email}}<br><br>
+<b>Departamento Nacimiento:</b><br>
+{{$consult->department}}<br><br>
+<b>Ciudad Nacimiento:</b><br>
+{{$consult->city}}<br><br>
+<b>Fecha Hora Registro:</b><br>
+{{$consult->created_at}}<br><br>
+
+<br>
+<p>Gracias por usar nuestros Servicios. Regresa Pronto!</p>
+
 </body>
 </html>

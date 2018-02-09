@@ -22,5 +22,5 @@ Route::get('/winner','UserController@winner');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get("/download-pdf","HomeController@downloadPDF");
+Route::get('/download-pdf/{id}','HomeController@downloadPDF');
 Route::get('/xls','HomeController@excel');

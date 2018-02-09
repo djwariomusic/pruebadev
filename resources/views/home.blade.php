@@ -48,7 +48,8 @@
             <div class="thumbnail">
               <img src="{{url('img/avatar.png')}}">
               <div class="caption">
-                <h3><b>Ficha Personal - <a href="{{url('/download-pdf')}}">Descargar PDF</a></b></h3><br>
+                <h3><b>Ficha Personal - <a href="{{url('/download-pdf/'.Auth::user()->id)}}" target="_blank">Descargar PDF</a></b></h3><br>
+
                 <p><b>CC:</b>  {{Auth::user()->cc}}</p>
                 <p><b>Apellidos y Nombres:</b>  {{Auth::user()->lastname}} {{Auth::user()->name}}</p>
                 <p><b>Celular:</b>  {{Auth::user()->cellphone}}</p>
@@ -75,7 +76,7 @@
           </div>
           </div>
           <center>
-            <a class="btn btn-primary" style="width:98%;" href="{{url('/xls')}}"><i class="fas fa-file-excel"></i> - Descargar Excel</a>
+            <a class="btn btn-primary" style="width:98%;" href="{{url('/xls')}}"><i class="fas fa-file-excel"></i> - Descargar Listado a Excel</a>
           </center>
     </div>
     <br><br>

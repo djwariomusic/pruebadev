@@ -18,19 +18,23 @@ class HomeController extends Controller
 
     public function excel()
     {
-      Excel::create('ReporteExcelHombresEdad', function($excel) {
+      Excel::create('ReporteExcel', function($excel) {
       $excel->sheet('EdadGenero', function($sheet) {
-      $usersinfo = User::select(DB::raw("users.cc as Cedula_Ciudadania, users.lastname as Apellidos, users.name as Nombres, users.email as Email"))->get();
+      $usersinfo = User::select(DB::raw("users.cc as Cedula_Ciudadania, users.lastname as Apellidos, users.name as Nombres, users.email as Email, users.cellphone as Celular, users.department as DepartamentoNac, users.city as CiudadNac, users.created_at as FechaRegistro"))->get();
         $sheet->fromArray($usersinfo);
             });
       })->export('xls');
 
     }
 
-    public function downloadPDF()
+    public function downloadPDF($id = NULL, Request $request)
     {
-       $pdf = PDF::loadView('pdfView');
-       return $pdf->download('invoice.pdf');
+      $consult = User::where('id',$id)->firstorFail();
+      $view =  \View::make('pdfView', compact('consult'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+
+      $pdf->loadHTML($view);
+      return $pdf->stream('memorando');
     }
 
     public function __construct()
