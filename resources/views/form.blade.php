@@ -1,34 +1,35 @@
 @extends('layouts.app')
+
 @section('style')
+<!-- Estilos Formulario de Registro-->
 <style>
-input[type=text],input[type=number],input[type=email], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
+  input[type=text],input[type=number],input[type=email], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+  }
 
-input[type=submit] {
-    width: 60%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+  input[type=submit] {
+      width: 60%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+  }
 
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-
-</style>
+  input[type=submit]:hover {
+      background-color: #45a049;
+  }
 </style>
 @endsection
+
 @section('content')
 <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -43,18 +44,20 @@ input[type=submit]:hover {
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Inicio</a></li>
+              <li class="active"><a href="{{url('/')}}">Inicio</a></li>
+              <!-- Menú Dinámico cuando Usuario esta Autenticado-->
               @guest
               @else
               <li><a href="{{url('/home')}}">Mi Cuenta</a></li>
               @endguest
-
             </ul>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
+          </div>
+        </div>
       </nav>
     <img src="img/banners-02.jpg" class="img-responsive"/>
+
     <div class="jumbotron" style="background-image: url('img/backgroundform.jpg');">
+    <!-- Formulario de Registro-->
           <form action="{{url('/registrar')}}" method="post" name="form">
             {{ csrf_field() }}
           <div class="col md-12">
@@ -122,11 +125,11 @@ input[type=submit]:hover {
     								<option value="Vichada"> Vichada </option>
 								</select>
                 </td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                   <td><b>Ciudad de Nacimiento:</b></td>
-                </tr>
-                <tr>
+              </tr>
+              <tr>
                 <td>
                 <select name="ciud_nac" id="ciud_nac" required title="Seleccione Ciudad de Nacimiento">
     								<option disabled selected value> -- Seleccionar Opción -- </option>
@@ -143,28 +146,29 @@ input[type=submit]:hover {
     								<option value="Tarapaca"> Tarapaca </option>
 								</select>
                 </td>
-                </tr>
-                <tr>
-                  <td><b>No Celular</b></td>
-                </tr>
-                <tr>
-                  <td><input type="number" name="cellphone"  placeholder="  Ingresar Numero"  maxlength="15" required></td>
-                </tr>
+              </tr>
+              <tr>
+                <td><b>No Celular</b></td>
+              </tr>
+              <tr>
+                <td><input type="number" name="cellphone"  placeholder="  Ingresar Numero"  maxlength="15" required></td>
+              </tr>
                 <td><b>Email:</b></td>
               </tr>
               <tr>
                 <td><input type="email" name="email" placeholder="  Ingresar Correo Electronico" maxlength="50"  required>
-                <input type="hidden" name="password" value="2017" >
+                <!-- Dato Clave Oculto-->
+                <input type="hidden" name="password" value="2017">
                 </td>
               </tr>
               <tr>
                 <td><b>Proteccion de Datos:</b></td>
               </tr>
               <tr>
-                <td width="60%" style="text-align:justify">Con la aceptacion de envio del presente formulario manifiesto que he sido informado por EDWINBELTRANDEV de que:
+                <td width="60%" style="text-align:justify">Con la aceptación de envio del presente formulario manifiesto que he sido informado por EDWINBELTRANDEV de que:
                   Actuarán como Responsables del Tratamiento de datos personales de los cuales soy titular y que, conjunta o separadamente
                   podrán recolectar, usar y tratar mis datos personales conforme la Política de Tratamiento de Datos de acuerdo a la Normatividad
-                  Ley 1581 de 2012 de Colombia. Si esta de acuerdo con la Politica de Tratamiento de Datos, seleccionar aceptar y finalizar con el registro.
+                  Ley 1581 de 2012 de Colombia. Si esta de acuerdo con la Política de Tratamiento de Datos, seleccionar aceptar y finalizar con el registro.
                 </td>
               </tr>
               <tr>
@@ -181,25 +185,19 @@ input[type=submit]:hover {
           </p>
           </form>
   </div>
-
-
-
-
 @endsection
 @section('scripts')
+<!-- Script AJAX Depa Ciudad-->
 <script type="text/javascript">
     $(document).ready(function(){
       $("#depa_nac").change(function () {
          $("#depa_nac option:selected").each(function () {
           elegido=$(this).val();
-
           $.post("{{url('js/modelos.php')}}", { elegido: elegido }, function(data){
           $("#ciud_nac").html(data);
           });
       });
     })
   });
-
-  </script>
-
+</script>
 @endsection

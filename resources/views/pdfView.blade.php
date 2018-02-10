@@ -43,24 +43,31 @@
 </head>
 <body>
 	<img src="./img/logo.png" />
-<h2>Documento PDF con Datos Personales</h2>
-<br><br>
-<b>Apellidos:</b><br>
-{{$consult->lastname}}<br><br>
-<b>Nombres:</b><br>
-{{$consult->name}}<br><br>
-<b>Cedula Ciudadania:</b><br>
-{{$consult->cc}}<br><br>
-<b>Celular:</b><br>
-{{$consult->cellphone}}<br><br>
-<b>Email:</b><br>
-{{$consult->email}}<br><br>
-<b>Departamento Nacimiento:</b><br>
-{{$consult->department}}<br><br>
-<b>Ciudad Nacimiento:</b><br>
-{{$consult->city}}<br><br>
-<b>Fecha Hora Registro:</b><br>
-{{$consult->created_at}}<br><br>
+	<h2>Documento PDF con Datos Personales</h2>
+	<br><br>
+	<b>Apellidos:</b><br>
+	{{$consult->lastname}}<br><br>
+
+	<b>Nombres:</b><br>
+	{{$consult->name}}<br><br>
+
+	<b>Cedula Ciudadanía:</b><br>
+	{{$consult->cc}}<br><br>
+
+	<b>Celular:</b><br>
+	{{$consult->cellphone}}<br><br>
+
+	<b>Email:</b><br>
+	{{$consult->email}}<br><br>
+
+	<b>Departamento Nacimiento:</b><br>
+	{{$consult->department}}<br><br>
+
+	<b>Ciudad Nacimiento:</b><br>
+	{{$consult->city}}<br><br>
+
+	<b>Fecha Hora Registro:</b><br>
+	{{$consult->created_at}}<br><br>
 
 <br>
 <p>Gracias por usar nuestros Servicios. Regresa Pronto!</p>
