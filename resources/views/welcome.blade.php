@@ -72,7 +72,7 @@
     <!-- Valiación de Cantidad Usuarios para Sorteo-->
     @if(isset($result))
       @if ($result=="falta")
-        <div class="alert alert-info">
+        <div class="alert alert-warning">
           <strong><img src="img/share.png"><br>Comparte este WebSite</strong><br>
           Recomienda esta pagina a un amigo. Ayudanos a completar el monto mínimo de participantes para el sorteo.
         </div>
@@ -271,7 +271,7 @@
           mario-edwin@hotmail.com
         </p>
         <p align="center">
-        <a class="btn btn-warning" href="https://www.edwinbeltrandev.wordpress.com">Descargar Manual Técnico!</a> <a class="btn btn-warning" href="https://www.edwinbeltrandev.wordpress.com">Descargar Manual Usuario!</a>
+        <a class="btn btn-warning" href="{{url('pdf/manualt.pdf')}}" target="_blank">Descargar Manual Técnico!</a> <a class="btn btn-warning" href="{{url('pdf/manualu.pdf')}}" target="_blank">Descargar Manual Usuario!</a>
         </p>
       </div>
 
@@ -287,7 +287,7 @@
   <!-- Script Animación NUmber Winner -->
   <script>
   setTimeout(function(){ var divwin = document.getElementById('numwin'); divwin.style.visibility="visible"; }, 500);
-  setTimeout(function(){ var divwin = document.getElementById('nomwin'); divwin.style.visibility="visible"; }, 4200);
+  setTimeout(function(){ var divnwin = document.getElementById('nomwin'); divnwin.style.visibility="visible"; }, 4200);
   $('.count').each(function () {
       $(this).prop('Counter',0).animate({
           Counter: $(this).text()
@@ -300,8 +300,4 @@
       });
   });
   </script>
-
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a7ce0bb8ed3af77"></script>
-
 @endsection
