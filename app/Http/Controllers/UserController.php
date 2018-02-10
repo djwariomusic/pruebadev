@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -26,13 +26,15 @@ class UserController extends Controller
      */
     public function create()
     {
+      /** Se recibe todos los parametros a traves de la Clase Input::all() */
       $input = Input::all();
       $ccvalid = $input['cc'];
       $emailvalid = $input['email'];
       $result1 = User::where('cc','=',$ccvalid)->get();
       $result2 = User::where('email','=',$emailvalid)->get();
+      /** Se captura el email y cedula para validación */
 
-
+      /** Si estan vacios se procede a crear el Usuario */
       if($result1->isEmpty() && $result2->isEmpty()){
         $user = new User();
         $user->name = $input['name'];
@@ -48,10 +50,11 @@ class UserController extends Controller
         $alerts="ok";
         return view('welcome',['alerts'=>$alerts]);
         }
-        else{
-          $alerts="error";
-          return view('welcome',['alerts'=>$alerts]);
-        }
+      /** Si no mensaje de error retornando este al Index */
+      else{
+        $alerts="error";
+        return view('welcome',['alerts'=>$alerts]);
+      }
 
 
     }
@@ -64,11 +67,15 @@ class UserController extends Controller
      */
     public function winner(Request $request)
     {
+      /** Se realiza un conteo de todos los usuarios registrados */
       $count = User::count();
+
+      /** Si la cantidad de Usuarios es menor a 5 retorna notificación */
       if($count<5){
         $result="falta";
         return view('welcome',['result'=>$result]);
       }
+      /** Si no elige un usuarios Aleatorio retornado unico registro*/
       else{
         $winner = User::inRandomOrder()->get()->first();
         $cc=$winner->cc;

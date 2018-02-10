@@ -18,8 +18,10 @@ class HomeController extends Controller
 
     public function excel()
     {
+      /** Controlador de Generar Excel */
       Excel::create('ReporteExcel', function($excel) {
-      $excel->sheet('EdadGenero', function($sheet) {
+      $excel->sheet('Usuarios', function($sheet) {
+      /** Query para generar Reporte */
       $usersinfo = User::select(DB::raw("users.cc as Cedula_Ciudadania, users.lastname as Apellidos, users.name as Nombres, users.email as Email, users.cellphone as Celular, users.department as DepartamentoNac, users.city as CiudadNac, users.created_at as FechaRegistro"))->get();
         $sheet->fromArray($usersinfo);
             });
@@ -29,12 +31,14 @@ class HomeController extends Controller
 
     public function downloadPDF($id = NULL, Request $request)
     {
+      /** Controlador de Generar Excel */
+      /** Controlador recibe Id User por get para consultar datos y enviarlos a la Vista PDF */
       $consult = User::where('id',$id)->firstorFail();
       $view =  \View::make('pdfView', compact('consult'))->render();
       $pdf = \App::make('dompdf.wrapper');
 
       $pdf->loadHTML($view);
-      return $pdf->stream('memorando');
+      return $pdf->stream('documento');
     }
 
     public function __construct()
@@ -49,6 +53,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+      /** Query para retonarnar listado paginado de Usuarios Registrados */
       $data = User::orderBy('lastname','asc')->Paginate(5);
       return view('home',['lists'=>$data]);
     }

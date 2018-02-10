@@ -14,11 +14,11 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="{{url('/')}}">Inicio</a></li>
+              <li><a href="{{url('/')}}">Inicio</a></li>
               <!-- Menú Dinámico cuando Usuario esta Autenticado-->
               @guest
               @else
-              <li><a href="{{url('/home')}}">Mi Cuenta</a></li>
+              <li class="active"><a href="{{url('/home')}}">Mi Cuenta</a></li>
               @endguest
             </ul>
           </div>
