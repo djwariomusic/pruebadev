@@ -86,8 +86,8 @@
         <p class="float-right">
           <a href="#">Ir arriba!</a>
         </p>
-        <p><i class="fas fa-user-circle"></i> Desarrollado por: Mario Edwin Beltrán Sarmiento</p>
-          <p><i class="fab fa-wordpress"></i><a href="https://edwinbeltrandev.wordpress.com/"> Encuentrame en Wordpress</a> o en <i class="fab fa-linkedin"></i> <a href="https://co.linkedin.com/in/edwin-beltran-80b20641">LinkedIn</a>.</p>
+        <p><i class="fas fa-user-circle"></i> <b>Desarrollado por:</b> Mario Edwin Beltrán Sarmiento</p>
+          <p>Encuentrame en <i class="fab fa-wordpress"></i><a href="https://edwinbeltrandev.wordpress.com/"> Wordpress</a> o en <i class="fab fa-linkedin"></i> <a href="https://co.linkedin.com/in/edwin-beltran-80b20641">LinkedIn</a>.</p>
         </div>
       </div>
 </div>

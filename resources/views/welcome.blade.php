@@ -60,7 +60,7 @@
       </a>
     </div>
     <div class="col-md-4">
-      <a href="{{url('/winner')}}" style="width:200px" class="btn btn-success">
+      <a href="{{url('/winner')}}" style="width:200px" onclick="winner()" class="btn btn-success">
         Ver Ganador del Día
       </a>
     </div>
@@ -82,15 +82,25 @@
           Esta es la Cedula de Ciudadanía GANADORA. Gracias por Participar.<i class="fal fa-smile"></i>
           <br>
         </div>
-        <div id="shiva"><span class="count">
-          @if(isset($cc))
-            @if(empty($cc))
-            0
-            @else
-            {{$cc}}
-            @endif
-          @endif
-        </span></div>@if(isset($winner)) {{$winner->name}} @endif
+        <div id="numwin" style="visibility:hidden;">
+        <center>
+          <font size="12px">
+            <div id="shiva"><span class="count">
+              @if(isset($cc))
+                {{$cc}}
+              @endif
+            </span></div>
+          </font>
+        </center>
+      </div>
+        @if(isset($winner))
+        <div class="alert alert-info" id="nomwin" style="visibility:hidden;">
+            <h4><b>Datos Personales del Ganador</b></h4><br>
+            <b>Apellidos y Nombres:</b> {{$winner->lastname}} {{$winner->name}}<br>
+            <b>Correo Electrónico : </b> {{$winner->email}}<br>
+            <b>Fecha Hora Registro:</b> {{$winner->created_at}}<br>
+        </div>
+        @endif
       @endif
     @endif
 
@@ -209,7 +219,7 @@
           una certificación en BigData para adquirir habilidades en Analítica sobre sistemas Base de Datos no Relacionales.
         </p>
         <p align="center">
-          <a href="https://www.edwinbeltrandev.wordpress.com">
+          <a href="https://www.edwinbeltrandev.wordpress.com" target="_blank">
             Acá encontraras mas información relevante sobre mis competencias laborales.
           </a>
         </p>
@@ -237,14 +247,15 @@
         <h4>Requisitos Mínimos de Usuario</h4>
         <ol>
           <li>Conexión a Internet.</li>
-          <li>Navegador de Internet.</li>
+          <li>Navegador de Internet. (Google Chrome 62.x, Internet Explorer 9)</li>
           <li>Microsoft Excel</li>
+          <li>Lector de PDF</li>
         </ol>
         <h4>Requisitos Mínimos Técnicos</h4>
         <ol>
-          <li>Servidor Web Xampp o Similares</li>
+          <li>Servidor Web Xampp 3.2.2 o Similares</li>
           <li>MySQL o MariaDB</li>
-          <li>PHP 5 en Adelante</li>
+          <li>PHP 7 en Adelante</li>
           <li>Composer</li>
           <li>Editor de Código (Atom)</li>
         </ol>
@@ -260,7 +271,7 @@
           mario-edwin@hotmail.com
         </p>
         <p align="center">
-        <a href="https://www.edwinbeltrandev.wordpress.com">ICON Descargar Manual!</a>
+        <a class="btn btn-warning" href="https://www.edwinbeltrandev.wordpress.com">Descargar Manual Técnico!</a> <a class="btn btn-warning" href="https://www.edwinbeltrandev.wordpress.com">Descargar Manual Usuario!</a>
         </p>
       </div>
 
@@ -275,6 +286,8 @@
 @section('scripts')
   <!-- Script Animación NUmber Winner -->
   <script>
+  setTimeout(function(){ var divwin = document.getElementById('numwin'); divwin.style.visibility="visible"; }, 500);
+  setTimeout(function(){ var divwin = document.getElementById('nomwin'); divwin.style.visibility="visible"; }, 4200);
   $('.count').each(function () {
       $(this).prop('Counter',0).animate({
           Counter: $(this).text()
